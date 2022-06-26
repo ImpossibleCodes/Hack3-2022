@@ -46,12 +46,12 @@ class WaterDatapoints {
       String time = datapoint["values"][0]["value"][0]["dateTime"] as String;
       datapoints.add(
         WaterData(
-          variableName: variableName,
-          variableDescription: variableDescription,
-          unit: unit,
-          value: value,
-          time: time,
-        ),
+            //variableName: variableName,
+            // variableDescription: variableDescription,
+            // unit: unit,
+            // value: value,
+            // time: time,
+            ),
       );
     }
     return datapoints;
