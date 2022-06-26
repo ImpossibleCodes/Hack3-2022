@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:water_finder/screens/instantaneous_data_screen.dart';
-import 'package:water_finder/screens/location_data_screen.dart';
+import 'package:water_finder/screens/home_screen.dart';
+// import 'package:water_finder/screens/instantaneous_data_screen.dart';
+// import 'package:water_finder/screens/location_data_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,10 +27,7 @@ class MyApp extends StatelessWidget {
       //   siteName: 'Site name',
       //   siteCode: '01646500',
       // ),
-      home: const LocationDataScreen(
-        latitude: 37.15344945,
-        longitude: -81.4139945,
-      ),
+      home: const HomeScreen(),
     );
   }
 }
