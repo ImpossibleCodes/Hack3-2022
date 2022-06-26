@@ -1,25 +1,26 @@
 import 'dart:math';
 
-import '../widgets/water_location_data.dart';
+import 'package:water_finder/widgets/location_data_widget.dart';
 
-class WaterLocationDatapoints {
+class LocationDatapoints {
   final double originalLatitude;
   final double originalLongitude;
-  final List<WaterLocationData> waterLocations;
+  final List<LocationDataWidget> waterLocations;
 
-  const WaterLocationDatapoints(
-      {required this.originalLatitude,
-      required this.originalLongitude,
-      required this.waterLocations});
+  const LocationDatapoints({
+    required this.originalLatitude,
+    required this.originalLongitude,
+    required this.waterLocations,
+  });
 
-  static WaterLocationDatapoints? fromStr(
+  static LocationDatapoints? fromStr(
       String response, double originalLatitude, double originalLongitude) {
     final split = response.split("\n").sublist(32);
     var subdivisions = [];
-    split.forEach((String line) {
+    for (var line in split) {
       final subdivide = line.split("\t");
       subdivisions.add(subdivide);
-    });
+    }
     subdivisions.removeLast();
 
     List locations = subdivisions;
@@ -28,11 +29,13 @@ class WaterLocationDatapoints {
     for (int i = 0; i < locations.length; i++) {
       double latitude = double.parse(locations[i][4]);
       double longitude = double.parse(locations[i][5]);
-      distances.add([
-        calculateDistance(
-            latitude, longitude, originalLatitude, originalLongitude),
-        i
-      ]);
+      distances.add(
+        [
+          calculateDistance(
+              latitude, longitude, originalLatitude, originalLongitude),
+          i,
+        ],
+      );
     }
 
     distances.sort((a, b) => (a[0] as double).compareTo((b[0] as double)));
@@ -44,7 +47,7 @@ class WaterLocationDatapoints {
       sortedLocationsX.add([distance.toString()] + locations[index]);
     }
 
-    return WaterLocationDatapoints(
+    return LocationDatapoints(
       originalLatitude: originalLatitude,
       originalLongitude: originalLongitude,
       waterLocations: parseLocations(sortedLocationsX),
@@ -53,7 +56,7 @@ class WaterLocationDatapoints {
 
   static double calculateDistance(double latitude1, double longitude1,
       double latitude2, double longitude2) {
-    const double Radius = 3958.76;
+    const double radius = 3958.76;
     latitude1 *= pi / 180;
     longitude1 *= pi / 180;
     latitude2 *= pi / 180;
@@ -61,18 +64,21 @@ class WaterLocationDatapoints {
 
     return acos(sin(latitude1) * sin(latitude2) +
             cos(latitude1) * cos(latitude2) * cos(longitude2 - longitude1)) *
-        Radius;
+        radius;
   }
 
-  static List<WaterLocationData> parseLocations(List sortedLocations) {
-    List<WaterLocationData> list = [];
+  static List<LocationDataWidget> parseLocations(List sortedLocations) {
+    List<LocationDataWidget> list = [];
     for (int x = 0; x < sortedLocations.length; x++) {
-      list.add(WaterLocationData(
-          Distance: sortedLocations[x][0],
-          Name: sortedLocations[x][3],
-          Latitude: sortedLocations[x][5],
-          Longitude: sortedLocations[x][6],
-          SiteNumber: sortedLocations[x][2]));
+      list.add(
+        LocationDataWidget(
+          distance: double.parse(sortedLocations[x][0]),
+          name: sortedLocations[x][3],
+          latitude: double.parse(sortedLocations[x][5]),
+          longitude: double.parse(sortedLocations[x][6]),
+          siteNumber: int.parse(sortedLocations[x][2]),
+        ),
+      );
     }
     return list;
   }

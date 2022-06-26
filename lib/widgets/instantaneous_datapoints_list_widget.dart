@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 
-import 'package:water_finder/models/water_datapoints.dart';
+import 'package:water_finder/models/instantaneous_datapoints.dart';
 
 class InstantaneousDatapointsList extends StatefulWidget {
   final String siteCode;
@@ -27,14 +27,13 @@ class _InstantaneousDatapointsListState extends State<InstantaneousDatapointsLis
         if (snapshot.hasData) {
           WaterDatapoints? waterDatapoints = WaterDatapoints.fromJson(jsonDecode(snapshot.data.body));
           if (waterDatapoints != null) {
-            return Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(left: 8, right: 8),
-                itemCount: waterDatapoints.datapoints.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return waterDatapoints.datapoints[index];
-                },
-              ),
+            return ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(left: 8, right: 8),
+              itemCount: waterDatapoints.datapoints.length,
+              itemBuilder: (BuildContext context, int index) {
+                return waterDatapoints.datapoints[index];
+              },
             );
           } else {
             return const Text("No data");
