@@ -8,8 +8,8 @@ class WaterDatapoints {
   // source info
   final String siteName;
   final String siteCode;
-  final String latitude;
-  final String longitude;
+  final double latitude;
+  final double longitude;
   // variable info
   final List<WaterData> datapoints;
 
@@ -29,8 +29,8 @@ class WaterDatapoints {
     return WaterDatapoints(
       siteName: data[0]["sourceInfo"]["siteName"] as String,
       siteCode: data[0]["sourceInfo"]["siteCode"][0]["value"] as String,
-      latitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["latitude"] as String,
-      longitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["longitude"],
+      latitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["latitude"] as double,
+      longitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["longitude"] as double,
       datapoints: parseWaterData(data),
     );
   }
