@@ -30,7 +30,7 @@ class _InstantaneousDataScreenState extends State<InstantaneousDataScreen> {
                       if (waterDatapoints != null) {
                         return Expanded(
                           child: ListView.builder(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.only(left: 8, right: 8),
                             itemCount: waterDatapoints.datapoints.length,
                             itemBuilder: (BuildContext context, int index) {
                               return waterDatapoints.datapoints[index];
