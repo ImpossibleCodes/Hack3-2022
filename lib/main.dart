@@ -10,17 +10,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Water Finder',
       home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              children: const [
-                Text("cool"),
-                Text("text"),
-              ],
-            ),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Water Finder',
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
           ),
+        ),
+        body: Row(
+          children: [
+            RaisedButton(
+                child: Text('Address'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FirstRoute()),
+                  );
+                }),
+            RaisedButton(
+              child: Text('Coordinates'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondRoute()),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
