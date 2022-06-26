@@ -29,10 +29,8 @@ class WaterDatapoints {
     return WaterDatapoints(
       siteName: data[0]["sourceInfo"]["siteName"] as String,
       siteCode: data[0]["sourceInfo"]["siteCode"][0]["value"] as String,
-      latitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["latitude"]
-          as String,
-      longitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]
-          ["longitude"],
+      latitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["latitude"] as String,
+      longitude: data[0]["sourceInfo"]["geoLocation"]["geogLocation"]["longitude"],
       datapoints: parseWaterData(data),
     );
   }
@@ -45,8 +43,7 @@ class WaterDatapoints {
           datapoint["variable"]["variableDescription"] as String;
       String unit = datapoint["variable"]["unit"]["unitCode"] as String;
       String value = datapoint["values"][0]["value"][0]["value"] as String;
-      DateTime time =
-          DateTime.parse(datapoint["values"][0]["value"][0]["dateTime"]);
+      String time = datapoint["values"][0]["value"][0]["dateTime"] as String;
       datapoints.add(
         WaterData(
           variableName: variableName,
