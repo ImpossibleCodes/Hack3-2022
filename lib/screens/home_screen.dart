@@ -127,7 +127,7 @@ class _MyStatefulWidgetState extends State<HomeScreen> {
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter in form "latitude longitutde"',
+                  hintText: 'Enter in form "latitude longitude"',
                 ),
               ),
               const Padding(
