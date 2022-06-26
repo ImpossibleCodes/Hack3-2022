@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:water_finder/test/instantaneous_data_test_screen.dart';
+import 'package:water_finder/screens/instantaneous_data_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +21,10 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      home: const InstantaneousDataScreen(key: Key('instantaneous_data_test_screen')),
+      home: const InstantaneousDataScreen(
+        siteName: 'Site name',
+        siteCode: '01646500',
+      ),
     );
   }
 }

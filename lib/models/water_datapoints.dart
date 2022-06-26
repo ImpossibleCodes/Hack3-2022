@@ -1,4 +1,4 @@
-import '../widgets/instantaneous_data_widget.dart';
+import 'package:water_finder/widgets/instantaneous_data_widget.dart';
 
 class WaterDatapoints {
   // source info
