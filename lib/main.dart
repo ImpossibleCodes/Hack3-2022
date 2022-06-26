@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,29 +31,40 @@ class MyApp extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(200),
+                padding: const EdgeInsets.all(25),
+              ),
+              Image(
+                image: NetworkImage(
+                    "https://publicdomainvectors.org/photos/1413121417.png"),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(25),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter a search term',
+                  hintText: 'Enter Address or Coordinates',
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(25),
+                padding: const EdgeInsets.all(15),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ElevatedButton(
-                      child: Text('Address'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const FirstRoute()),
-                        );
-                      }),
+                    child: Text('   Address   '),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FirstRoute()),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(25),
+                  ),
                   ElevatedButton(
                     child: Text('Coordinates'),
                     onPressed: () {
