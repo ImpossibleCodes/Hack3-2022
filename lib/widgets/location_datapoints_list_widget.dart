@@ -37,6 +37,9 @@ class _LocationDatapointsListState extends State<LocationDatapointsList> {
             .get(Uri.parse(createURL(widget.latitude, widget.longitude, widget.boxRadius))),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
+            if (snapshot.data.body.toString().contains('No sites found')) {
+              return const Text("No sites found! Try different location");
+            }
             LocationDatapoints? locationDatapoints = LocationDatapoints.fromStr(
                 snapshot.data.body, widget.latitude, widget.longitude);
             if (locationDatapoints != null) {
@@ -49,7 +52,7 @@ class _LocationDatapointsListState extends State<LocationDatapointsList> {
                 },
               );
             } else {
-              return const Text("No data");
+              return const Text("No sites found! Try different location");
             }
           } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());

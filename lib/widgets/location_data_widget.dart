@@ -46,7 +46,7 @@ class LocationDataWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Text(
-                "$distance miles away",
+                "${distance.toStringAsFixed(2)} miles away",
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),

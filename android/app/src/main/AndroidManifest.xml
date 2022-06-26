@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.water_finder">
    <application
-        android:label="water_finder"
+        android:label="Wander"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
