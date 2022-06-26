@@ -1,7 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
-
 import 'water_data.dart';
 
 class WaterDatapoints {
@@ -40,19 +36,23 @@ class WaterDatapoints {
     for (var datapoint in data) {
       String variableName = datapoint["variable"]["variableName"] as String;
       variableName = variableName.replaceAll(RegExp(r',.*'), '');
-      String variableDescription =
-          datapoint["variable"]["variableDescription"] as String;
+      String variableDescription = datapoint["variable"]["variableDescription"] as String;
       String unit = datapoint["variable"]["unit"]["unitCode"] as String;
       String value = datapoint["values"][0]["value"][0]["value"] as String;
+      double noDataValue = datapoint["variable"]["noDataValue"] as double;
+      if (double.parse(value) == noDataValue) {
+        value = "No Data Found";
+        continue;
+      }
       DateTime time = DateTime.parse(datapoint["values"][0]["value"][0]["dateTime"] as String);
       datapoints.add(
         WaterData(
-            //variableName: variableName,
-            // variableDescription: variableDescription,
-            // unit: unit,
-            // value: value,
-            // time: time,
-            ),
+          variableName: variableName,
+          variableDescription: variableDescription,
+          unit: unit,
+          value: value,
+          time: time,
+        ),
       );
     }
     return datapoints;
