@@ -1,4 +1,4 @@
-# water_finder
+# Wander
 
 A new Flutter project.
 
