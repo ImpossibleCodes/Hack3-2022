@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       //   siteCode: '01646500',
       // ),
       home: const LocationDataScreen(
-        latitude: 38.919680,
-        longitude: -77.157290,
+        latitude: 37.15344945,
+        longitude: -81.4139945,
       ),
     );
   }

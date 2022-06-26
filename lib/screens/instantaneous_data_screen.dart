@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water_finder/widgets/instantaneous_datapoints_list_widget.dart';
 
 class InstantaneousDataScreen extends StatelessWidget {
   final String siteName;
@@ -17,8 +18,7 @@ class InstantaneousDataScreen extends StatelessWidget {
         title: Text(siteName),
       ),
       body: Center(
-        child: InstantaneousDataScreen(
-          siteName: siteName,
+        child: InstantaneousDatapointsList(
           siteCode: siteCode,
         ),
       ),

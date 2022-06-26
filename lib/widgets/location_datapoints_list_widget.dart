@@ -7,11 +7,13 @@ import 'package:water_finder/models/location_datapoints.dart';
 class LocationDatapointsList extends StatefulWidget {
   final double latitude;
   final double longitude;
+  final double boxRadius;
 
   const LocationDatapointsList({
     super.key,
     required this.latitude,
     required this.longitude,
+    required this.boxRadius,
   });
 
   @override
@@ -32,7 +34,7 @@ class _LocationDatapointsListState extends State<LocationDatapointsList> {
     } else {
       return FutureBuilder(
         future: http
-            .get(Uri.parse(createURL(widget.latitude, widget.longitude, .05))),
+            .get(Uri.parse(createURL(widget.latitude, widget.longitude, widget.boxRadius))),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             LocationDatapoints? locationDatapoints = LocationDatapoints.fromStr(

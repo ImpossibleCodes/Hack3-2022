@@ -21,6 +21,7 @@ class LocationDataScreen extends StatelessWidget {
         child: LocationDatapointsList(
           latitude: latitude,
           longitude: longitude,
+          boxRadius: 0.1,
         ),
       ),
     );

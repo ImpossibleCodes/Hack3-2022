@@ -76,7 +76,7 @@ class LocationDatapoints {
           name: sortedLocations[x][3],
           latitude: double.parse(sortedLocations[x][5]),
           longitude: double.parse(sortedLocations[x][6]),
-          siteNumber: int.parse(sortedLocations[x][2]),
+          siteNumber: (sortedLocations[x][2]),
         ),
       );
     }

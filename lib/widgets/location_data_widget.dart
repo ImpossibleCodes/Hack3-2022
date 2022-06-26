@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:water_finder/screens/instantaneous_data_screen.dart';
 
 class LocationDataWidget extends StatelessWidget {
   final double distance;
   final String name;
   final double latitude;
   final double longitude;
-  final int siteNumber;
+  final String siteNumber;
 
   const LocationDataWidget({
     super.key,
@@ -23,31 +24,44 @@ class LocationDataWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Text(
-              '$name',
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlign: TextAlign.center,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => InstantaneousDataScreen(
+                siteName: name,
+                siteCode: siteNumber,
+              ),
             ),
-            Text(
-              "$distance miles away",
-              style: Theme.of(context).textTheme.labelLarge,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              '$latitude, $longitude',
-              style: Theme.of(context).textTheme.labelMedium,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              "Site Number: $siteNumber",
-              style: Theme.of(context).textTheme.labelSmall,
-              textAlign: TextAlign.center,
-            ),
-          ],
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(
+                name,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                "$distance miles away",
+                style: Theme.of(context).textTheme.labelLarge,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                '$latitude, $longitude',
+                style: Theme.of(context).textTheme.labelMedium,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                "Site Number: $siteNumber",
+                style: Theme.of(context).textTheme.labelSmall,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
