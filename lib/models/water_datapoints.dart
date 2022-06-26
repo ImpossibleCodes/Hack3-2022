@@ -1,4 +1,4 @@
-import 'water_data.dart';
+import '../widgets/instantaneous_data_widget.dart';
 
 class WaterDatapoints {
   // source info
@@ -7,7 +7,7 @@ class WaterDatapoints {
   final double latitude;
   final double longitude;
   // variable info
-  final List<WaterData> datapoints;
+  final List<InstantaneousDataWidget> datapoints;
 
   const WaterDatapoints({
     required this.siteName,
@@ -31,8 +31,8 @@ class WaterDatapoints {
     );
   }
 
-  static List<WaterData> parseWaterData(List<dynamic> data) {
-    List<WaterData> datapoints = [];
+  static List<InstantaneousDataWidget> parseWaterData(List<dynamic> data) {
+    List<InstantaneousDataWidget> datapoints = [];
     for (var datapoint in data) {
       String variableName = datapoint["variable"]["variableName"] as String;
       variableName = variableName.replaceAll(RegExp(r',.*'), '');
@@ -46,7 +46,7 @@ class WaterDatapoints {
       }
       DateTime time = DateTime.parse(datapoint["values"][0]["value"][0]["dateTime"] as String);
       datapoints.add(
-        WaterData(
+        InstantaneousDataWidget(
           variableName: variableName,
           variableDescription: variableDescription,
           unit: unit,

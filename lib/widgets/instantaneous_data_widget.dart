@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 import 'package:intl/intl.dart';
 
 
-class WaterData extends StatelessWidget {
+class InstantaneousDataWidget extends StatelessWidget {
   final String variableName;
   final String variableDescription;
   final String unit;
   final String value;
   final DateTime time;
 
-  const WaterData({
+  const InstantaneousDataWidget({
     super.key,
     required this.variableDescription,
     required this.variableName,
