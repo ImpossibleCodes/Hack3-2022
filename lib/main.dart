@@ -27,8 +27,6 @@ class _MyAppState extends State<MyApp> {
           child: Center(
             child: Column(
               children: [
-                const Text("cool"),
-                const Text("text"),
                 FutureBuilder(
                   future: http.get(Uri.parse(
                       'https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=01646500&siteStatus=all')),

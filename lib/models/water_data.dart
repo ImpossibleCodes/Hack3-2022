@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:intl/intl.dart';
+
+
 class WaterData extends StatelessWidget {
   final String variableName;
   final String variableDescription;
   final String unit;
   final String value;
-  final String time;
+  final DateTime time;
 
   const WaterData({
     super.key,
@@ -37,7 +40,7 @@ class WaterData extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
-                time,
+                DateFormat.yMMMMEEEEd('en_US').format(time),
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ],

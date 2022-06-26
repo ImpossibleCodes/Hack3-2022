@@ -39,11 +39,12 @@ class WaterDatapoints {
     List<WaterData> datapoints = [];
     for (var datapoint in data) {
       String variableName = datapoint["variable"]["variableName"] as String;
+      variableName = variableName.replaceAll(RegExp(r',.*'), '');
       String variableDescription =
           datapoint["variable"]["variableDescription"] as String;
       String unit = datapoint["variable"]["unit"]["unitCode"] as String;
       String value = datapoint["values"][0]["value"][0]["value"] as String;
-      String time = datapoint["values"][0]["value"][0]["dateTime"] as String;
+      DateTime time = DateTime.parse(datapoint["values"][0]["value"][0]["dateTime"] as String);
       datapoints.add(
         WaterData(
           variableName: variableName,
